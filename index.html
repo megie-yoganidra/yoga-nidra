@@ -3,44 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to Yoga Nidra — Megie Santana</title>
+<title>Yoga Nidra — The Quiet Change Within</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #f5f0e8;
-    --warm-white: #faf8f4;
-    --teal: #4a9a8f;
-    --teal-light: #6db8b0;
-    --teal-dark: #2d6b63;
-    --text-dark: #2c2c2c;
-    --text-mid: #5a5a5a;
-    --text-light: #8a8a8a;
-    --sage: #a8b5a0;
-    --blush: #e8d5c4;
+    --cream: #faf6ef;
+    --cream-soft: #f5efe2;
+    --khaki: #f8d794;
+    --khaki-soft: #fce8b8;
+    --emerald: #2b4139;
+    --emerald-deep: #1d2e28;
+    --emerald-light: #4a6b5a;
+    --wasabi: #80907e;
+    --earth: #b86830;
+    --earth-soft: #d18d5a;
+    --noir: #111a19;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Jost', sans-serif;
-    background: var(--warm-white);
-    color: var(--text-dark);
+    background: var(--cream);
+    color: var(--noir);
     font-weight: 300;
     overflow-x: hidden;
   }
 
   /* HERO */
   .hero {
-    min-height: 100vh;
-    background: var(--cream);
+    min-height: 92vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 60px 24px;
+    padding: 80px 24px;
     position: relative;
     overflow: hidden;
   }
@@ -51,7 +50,7 @@
     top: -100px; right: -100px;
     width: 500px; height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(74,154,143,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(43,65,57,0.10) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -61,18 +60,16 @@
     bottom: -80px; left: -80px;
     width: 400px; height: 400px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(168,181,160,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(248,215,148,0.30) 0%, transparent 70%);
     pointer-events: none;
   }
 
   .hero-eyebrow {
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 28px;
+    color: var(--earth);
+    margin-bottom: 32px;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.2s;
   }
@@ -80,139 +77,93 @@
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: clamp(42px, 7vw, 80px);
-    line-height: 1.1;
-    color: var(--text-dark);
-    margin-bottom: 20px;
+    font-style: italic;
+    font-size: clamp(54px, 9vw, 104px);
+    line-height: 1;
+    color: var(--emerald);
+    margin-bottom: 24px;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.4s;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--teal-dark);
   }
 
   .hero-tagline {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: clamp(18px, 2.5vw, 24px);
-    color: var(--text-mid);
-    margin-bottom: 48px;
+    font-size: clamp(20px, 2.5vw, 28px);
+    color: var(--wasabi);
+    margin-bottom: 32px;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.6s;
   }
 
-  .hero-meta {
-    display: flex;
-    gap: 32px;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 52px;
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--earth);
+    margin: 0 auto;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.8s;
   }
 
-  .meta-item {
-    text-align: center;
-  }
-
-  .meta-label {
+  /* shared utilities */
+  .section-label {
     font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--text-light);
+    color: var(--earth);
+    margin-bottom: 20px;
     display: block;
-    margin-bottom: 4px;
   }
 
-  .meta-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    color: var(--text-dark);
-  }
-
-  .meta-divider {
-    width: 1px;
-    height: 40px;
-    background: var(--blush);
-  }
-
-  .hero-cta {
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1s;
-  }
-
-  .btn-primary {
-    display: inline-block;
-    background: var(--teal);
-    color: white;
-    padding: 16px 48px;
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  .btn-primary:hover {
-    background: var(--teal-dark);
-    transform: translateY(-2px);
-  }
-
-  .free-badge {
-    display: inline-block;
-    margin-top: 16px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--teal);
-  }
-
-  /* HOOK SECTION */
+  /* HOOK - emerald, deep contemplative anchor */
   .hook {
-    background: var(--teal-dark);
-    color: white;
-    padding: 80px 24px;
+    background: var(--emerald);
+    color: var(--cream);
+    padding: 120px 24px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
 
-  .hook-inner {
-    max-width: 720px;
-    margin: 0 auto;
+  .hook::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(248,215,148,0.06) 0%, transparent 60%);
+    pointer-events: none;
   }
+
+  .hook-inner { max-width: 740px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .hook .section-label { color: var(--khaki); margin-bottom: 32px; }
 
   .hook h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: clamp(28px, 4vw, 46px);
+    font-size: clamp(30px, 4.2vw, 50px);
     line-height: 1.4;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
+    color: var(--cream);
   }
 
   .hook h2 em {
     font-style: italic;
-    color: var(--teal-light);
+    color: var(--khaki);
   }
 
   .hook p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.75);
-    max-width: 560px;
+    font-size: 16px;
+    line-height: 1.95;
+    color: rgba(250,246,239,0.78);
+    max-width: 600px;
     margin: 0 auto;
   }
 
-  /* WHAT IS IT */
-  .what {
-    padding: 100px 24px;
-    background: var(--warm-white);
-  }
+  /* WHAT IS */
+  .what { padding: 120px 24px; background: var(--cream); }
 
   .what-inner {
     max-width: 960px;
@@ -223,64 +174,82 @@
     align-items: center;
   }
 
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 20px;
-    display: block;
-  }
-
   .what-text h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: clamp(30px, 3.5vw, 44px);
+    font-size: clamp(32px, 3.5vw, 46px);
     line-height: 1.2;
-    margin-bottom: 24px;
-    color: var(--text-dark);
+    margin-bottom: 28px;
+    color: var(--emerald);
   }
 
   .what-text p {
     font-size: 15px;
     line-height: 1.9;
-    color: var(--text-mid);
-    margin-bottom: 16px;
+    color: var(--noir);
+    margin-bottom: 18px;
+    opacity: 0.78;
   }
 
   .quote-block {
-    border-left: 2px solid var(--teal-light);
-    padding: 24px 32px;
-    background: var(--cream);
+    border-left: 2px solid var(--earth);
+    padding: 28px 36px;
+    background: var(--cream-soft);
+    border-radius: 0 8px 8px 0;
   }
 
   .quote-block p {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1.6;
-    color: var(--text-dark);
-    margin-bottom: 12px;
+    color: var(--emerald);
+    margin-bottom: 16px;
   }
 
   .quote-block cite {
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--text-light);
+    color: var(--wasabi);
     font-style: normal;
   }
 
-  /* SCIENCE */
-  .science {
-    background: var(--cream);
-    padding: 100px 24px;
+  /* CHANGE - soft khaki landing */
+  .change {
+    background: var(--khaki-soft);
+    padding: 120px 24px;
+    text-align: center;
   }
 
-  .science-inner {
-    max-width: 960px;
-    margin: 0 auto;
+  .change-inner { max-width: 720px; margin: 0 auto; }
+
+  .change h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4vw, 50px);
+    color: var(--emerald);
+    margin-bottom: 32px;
+    line-height: 1.25;
   }
+
+  .change h2 em {
+    font-style: italic;
+    color: var(--earth);
+  }
+
+  .change p {
+    font-size: 16px;
+    line-height: 2;
+    color: var(--noir);
+    margin-bottom: 20px;
+    opacity: 0.78;
+  }
+
+  /* SCIENCE - small square tiles */
+  .science { background: var(--cream); padding: 120px 24px; }
+
+  .science-inner { max-width: 920px; margin: 0 auto; }
 
   .science-header {
     text-align: center;
@@ -290,257 +259,199 @@
   .science-header h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: clamp(30px, 3.5vw, 44px);
-    color: var(--text-dark);
+    font-size: clamp(32px, 3.5vw, 46px);
+    color: var(--emerald);
     margin-bottom: 16px;
   }
 
   .science-header p {
     font-size: 15px;
-    color: var(--text-mid);
-    max-width: 560px;
+    color: var(--noir);
+    max-width: 580px;
     margin: 0 auto;
     line-height: 1.8;
+    opacity: 0.75;
   }
 
-  .science-cards {
+  .science-tiles {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
 
-  .science-card {
-    background: white;
-    padding: 36px 28px;
-    border-top: 2px solid var(--teal-light);
+  .science-tile {
+    background: var(--cream-soft);
+    padding: 40px 32px;
+    border-top: 2px solid var(--earth);
+    border-radius: 0 0 8px 8px;
+    transition: transform 0.3s ease;
   }
 
-  .science-card .icon {
-    font-size: 28px;
-    margin-bottom: 16px;
-    display: block;
+  .science-tile:hover {
+    transform: translateY(-4px);
   }
 
-  .science-card h3 {
+  .science-tile h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 400;
-    margin-bottom: 12px;
-    color: var(--text-dark);
+    margin-bottom: 14px;
+    color: var(--emerald);
   }
 
-  .science-card p {
+  .science-tile p {
     font-size: 14px;
     line-height: 1.8;
-    color: var(--text-mid);
+    color: var(--noir);
+    opacity: 0.8;
   }
 
-  /* PROGRAM */
-  .program {
-    padding: 100px 24px;
-    background: var(--warm-white);
+  /* USE - emerald block, second deep anchor */
+  .use {
+    background: var(--emerald);
+    color: var(--cream);
+    padding: 120px 24px;
   }
 
-  .program-inner {
-    max-width: 720px;
-    margin: 0 auto;
-  }
+  .use-inner { max-width: 800px; margin: 0 auto; }
 
-  .program-header {
+  .use-header {
     text-align: center;
-    margin-bottom: 56px;
+    margin-bottom: 64px;
   }
 
-  .program-header h2 {
+  .use-header .section-label { color: var(--khaki); }
+
+  .use-header h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: clamp(30px, 3.5vw, 44px);
-    color: var(--text-dark);
+    font-size: clamp(32px, 3.5vw, 46px);
+    color: var(--cream);
   }
 
-  .program-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
+  .use-list { list-style: none; }
 
-  .program-item {
+  .use-item {
     display: grid;
-    grid-template-columns: 48px 1fr;
-    gap: 24px;
+    grid-template-columns: 64px 1fr;
+    gap: 28px;
     align-items: start;
-    padding: 28px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.07);
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(248,215,148,0.18);
   }
 
-  .program-item:last-child {
-    border-bottom: none;
-  }
+  .use-item:last-child { border-bottom: none; }
 
-  .program-num {
+  .use-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    color: var(--teal-light);
+    font-style: italic;
+    font-size: 38px;
+    color: var(--khaki);
     line-height: 1;
-    margin-top: 4px;
-  }
-
-  .program-content h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 8px;
-    color: var(--text-dark);
-  }
-
-  .program-content p {
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--text-mid);
-  }
-
-  /* WHO IS IT FOR */
-  .who {
-    background: var(--teal-dark);
-    padding: 80px 24px;
-    text-align: center;
-  }
-
-  .who-inner {
-    max-width: 680px;
-    margin: 0 auto;
-  }
-
-  .who h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: clamp(28px, 3.5vw, 40px);
-    color: white;
-    margin-bottom: 40px;
-  }
-
-  .who-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    text-align: left;
-    margin-bottom: 48px;
-  }
-
-  .who-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    color: rgba(255,255,255,0.85);
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .who-item::before {
-    content: '—';
-    color: var(--teal-light);
-    flex-shrink: 0;
     margin-top: 2px;
   }
 
-  /* REGISTER */
-  .register {
-    background: var(--cream);
-    padding: 100px 24px;
-    text-align: center;
+  .use-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: var(--cream);
   }
 
-  .register-inner {
-    max-width: 520px;
+  .use-content p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(250,246,239,0.78);
+  }
+
+  /* WORKSHOP - redesigned, no more box */
+  .workshop {
+    background: var(--cream);
+    padding: 120px 24px;
+  }
+
+  .workshop-inner { max-width: 820px; margin: 0 auto; }
+
+  .workshop-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .workshop-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4vw, 50px);
+    color: var(--emerald);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .workshop-header h2 em {
+    font-style: italic;
+    color: var(--earth);
+  }
+
+  .workshop-header p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--noir);
+    opacity: 0.78;
+    max-width: 580px;
     margin: 0 auto;
   }
 
-  .register h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: clamp(30px, 3.5vw, 44px);
-    color: var(--text-dark);
-    margin-bottom: 12px;
-  }
-
-  .register .sub {
-    font-size: 14px;
-    color: var(--text-light);
+  .explore-title {
+    text-align: center;
     margin-bottom: 40px;
-    line-height: 1.7;
   }
 
-  .form-group {
-    margin-bottom: 16px;
-    text-align: left;
+  .explore-title h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--earth);
   }
 
-  .form-group label {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--text-light);
-    margin-bottom: 8px;
-  }
-
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid rgba(0,0,0,0.12);
-    background: white;
-    font-family: 'Jost', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--text-dark);
-    outline: none;
-    transition: border-color 0.2s ease;
-    appearance: none;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus {
-    border-color: var(--teal);
-  }
-
-  .form-row {
+  .explore-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
   }
 
-  .submit-btn {
-    width: 100%;
-    background: var(--teal);
-    color: white;
-    border: none;
-    padding: 18px;
-    font-family: 'Jost', sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: background 0.3s ease;
+  .explore-item {
+    padding: 20px 0;
+    border-top: 1px solid rgba(184,104,48,0.2);
   }
 
-  .submit-btn:hover {
-    background: var(--teal-dark);
+  .explore-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--emerald);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
   }
 
-  .privacy-note {
-    font-size: 11px;
-    color: var(--text-light);
-    margin-top: 16px;
-    line-height: 1.6;
+  .explore-item h4 .ornament {
+    color: var(--earth);
+    font-size: 16px;
+  }
+
+  .explore-item p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--noir);
+    opacity: 0.75;
   }
 
   /* ABOUT */
   .about {
-    padding: 100px 24px;
-    background: var(--warm-white);
+    padding: 120px 24px;
+    background: var(--khaki-soft);
   }
 
   .about-inner {
@@ -552,70 +463,70 @@
   .about h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: clamp(28px, 3vw, 38px);
-    color: var(--text-dark);
-    margin-bottom: 24px;
+    font-size: clamp(30px, 3.5vw, 42px);
+    color: var(--emerald);
+    margin-bottom: 28px;
   }
 
   .about p {
     font-size: 15px;
     line-height: 1.9;
-    color: var(--text-mid);
+    color: var(--noir);
     margin-bottom: 16px;
+    opacity: 0.8;
+  }
+
+  /* CLOSING */
+  .closing {
+    background: var(--emerald-deep);
+    color: var(--cream);
+    padding: 120px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(248,215,148,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .closing-inner { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .closing h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.5;
+    color: var(--khaki);
   }
 
   /* FOOTER */
   footer {
-    background: var(--text-dark);
-    color: rgba(255,255,255,0.5);
+    background: var(--noir);
+    color: rgba(250,246,239,0.5);
     text-align: center;
     padding: 40px 24px;
     font-size: 12px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
   }
 
-  footer a {
-    color: var(--teal-light);
-    text-decoration: none;
-  }
-
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* RESPONSIVE */
   @media (max-width: 768px) {
-    .what-inner {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
-
-    .science-cards {
-      grid-template-columns: 1fr;
-    }
-
-    .form-row {
-      grid-template-columns: 1fr;
-    }
-
-    .meta-divider {
-      display: none;
-    }
-  }
-
-  /* Success state */
-  .success-msg {
-    display: none;
-    background: var(--teal);
-    color: white;
-    padding: 24px;
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-style: italic;
-    margin-top: 24px;
+    .what-inner { grid-template-columns: 1fr; gap: 48px; }
+    .science-tiles { grid-template-columns: 1fr; }
+    .explore-grid { grid-template-columns: 1fr; gap: 8px; }
   }
 </style>
 </head>
@@ -623,147 +534,150 @@
 
 <!-- HERO -->
 <section class="hero">
-  <span class="hero-eyebrow">Sodashi Spa · Ericeira</span>
-  <h1 class="hero-title">Introduction to<br><em>Yoga Nidra</em></h1>
+  <span class="hero-eyebrow">A Workshop by Megie Santana</span>
+  <h1 class="hero-title">Yoga Nidra</h1>
   <p class="hero-tagline">The quiet change within</p>
-
-  <div class="hero-meta">
-    <div class="meta-item">
-      <span class="meta-label">Date</span>
-      <span class="meta-value">Saturday, 24 May</span>
-    </div>
-    <div class="meta-divider"></div>
-    <div class="meta-item">
-      <span class="meta-label">Time</span>
-      <span class="meta-value">10:30 — 12:00</span>
-    </div>
-    <div class="meta-divider"></div>
-    <div class="meta-item">
-      <span class="meta-label">With</span>
-      <span class="meta-value">Megie Santana</span>
-    </div>
-  </div>
-
-  <div class="hero-cta">
-    <br>
-  </div>
+  <div class="hero-divider"></div>
 </section>
 
-<!-- HOOK -->
+<!-- HOOK (emerald) -->
 <section class="hook">
   <div class="hook-inner">
-    <h2>Most people have heard of Yoga Nidra.<br><em>Few understand why it actually works</em> — or how to use it.</h2>
-    <p>This is not another relaxation class. This is an introduction to one of yoga's most researched and potent practices — where you will understand the science, feel the practice, and leave knowing exactly how to apply it in your own life.</p>
+    <h2>We try to change through effort.<br><em>More discipline. More willpower. More thinking.</em></h2>
+    <p>But the patterns that shape us — the way we react, the thoughts that loop, the tension we carry — do not live in the thinking mind. They live deeper. Yoga Nidra reaches that place.</p>
   </div>
 </section>
 
-<!-- WHAT IS IT -->
+<!-- WHAT IS -->
 <section class="what">
   <div class="what-inner">
     <div class="what-text">
       <span class="section-label">What is Yoga Nidra</span>
-      <h2>Sleep is not relaxation.<br>Yoga Nidra is.</h2>
-      <p>Yoga Nidra is a state of conscious deep rest — the threshold between waking and sleep, where the body relaxes completely while awareness remains awake.</p>
-      <p>In this state, the mind becomes extraordinarily receptive. Tension accumulated in the muscles, emotions, and thoughts begins to dissolve — not through effort, but through awareness. Research shows that a single session can provide rest equivalent to several hours of ordinary sleep.</p>
-      <p>It is both an ancient practice and a scientifically studied technique. And once you understand how it works, you can use it deliberately — for rest, for clarity, for change.</p>
+      <h2>A state of conscious deep rest</h2>
+      <p>Yoga Nidra is the threshold between waking and sleep — where the body relaxes completely while awareness remains awake. An ancient practice, refined over centuries, now studied by modern neuroscience.</p>
+      <p>In this state the mind becomes extraordinarily receptive. Tension held in the muscles, emotions, and thoughts begins to dissolve — not through effort, but through awareness. A single session can provide rest equivalent to several hours of ordinary sleep.</p>
+      <p>It is at once profoundly simple and profoundly transformative.</p>
     </div>
 
     <div class="quote-block">
-      <p>"Relaxation does not mean sleep. Relaxation means to be blissfully happy. Sleep gives only mind and sense relaxation. Yoga Nidra relaxes the atma, the inner self."</p>
+      <p>"Relaxation does not mean sleep. Relaxation means to be blissfully happy. Sleep gives only mind and sense relaxation. Yoga Nidra relaxes the inner self."</p>
       <cite>— Swami Satyananda Saraswati</cite>
     </div>
   </div>
 </section>
 
-<!-- SCIENCE -->
+<!-- CHANGE -->
+<section class="change">
+  <div class="change-inner">
+    <span class="section-label">The Change Within</span>
+    <h2>Practiced regularly, it does not just relax you.<br><em>It gently rewrites what is underneath.</em></h2>
+    <p>Our habits, reactions and inner narratives are not stored in the conscious mind. They live in the subconscious — where willpower cannot reach. This is why so much personal change feels like pushing against a wall.</p>
+    <p>Yoga Nidra works precisely at this layer. Through the practice, the mind enters a state of profound receptivity, where new intentions, patterns, and impressions can be planted and old ones gently released.</p>
+  </div>
+</section>
+
+<!-- SCIENCE (3 small tiles) -->
 <section class="science">
   <div class="science-inner">
     <div class="science-header">
       <span class="section-label">The Science</span>
       <h2>Why it works</h2>
-      <p>Yoga Nidra is not mysticism — it is a systematic method for accessing the deepest layers of the mind. Here is what happens in your body and brain during the practice.</p>
+      <p>Yoga Nidra is not mysticism. It is a systematic method for accessing the deepest layers of the mind.</p>
     </div>
 
-    <div class="science-cards">
-      <div class="science-card">
-        <span class="icon">🧠</span>
+    <div class="science-tiles">
+      <div class="science-tile">
         <h3>The Hypnagogic State</h3>
-        <p>Between waking and sleep, the brain enters a state of exceptional receptivity. Impressions, intentions, and new patterns are absorbed without resistance — below the level of logic and willpower.</p>
+        <p>Between waking and sleep, the brain enters a state of exceptional receptivity. Intentions and new patterns are absorbed without resistance — below the level of logic and willpower.</p>
       </div>
-      <div class="science-card">
-        <span class="icon">🫀</span>
+      <div class="science-tile">
         <h3>Nervous System Reset</h3>
-        <p>Yoga Nidra shifts the body from sympathetic (stress) to parasympathetic (rest) activation. Blood pressure lowers, cortisol drops, muscles release their chronic holding patterns.</p>
+        <p>Yoga Nidra shifts the body from sympathetic (stress) to parasympathetic (rest) activation. Blood pressure lowers, cortisol drops, and the body learns how to truly let go.</p>
       </div>
-      <div class="science-card">
-        <span class="icon">🌊</span>
+      <div class="science-tile">
         <h3>Threefold Release</h3>
-        <p>Modern science identifies three layers of tension — muscular, emotional, and mental. Yoga Nidra works systematically through all three, where ordinary sleep and relaxation techniques cannot reach.</p>
+        <p>Modern science identifies three layers of tension — muscular, emotional, and mental. Yoga Nidra works systematically through all three, where ordinary rest cannot reach.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROGRAM -->
-<section class="program">
-  <div class="program-inner">
-    <div class="program-header">
-      <span class="section-label">The Session</span>
-      <h2>What we will explore together</h2>
+<!-- USE (emerald) -->
+<section class="use">
+  <div class="use-inner">
+    <div class="use-header">
+      <span class="section-label">How to Use It</span>
+      <h2>A practice that belongs to your daily life</h2>
     </div>
 
-    <ul class="program-list">
-      <li class="program-item">
-        <span class="program-num">01</span>
-        <div class="program-content">
-          <h3>Asana — Preparing the Body</h3>
-          <p>Gentle movement to release physical tension so the body can truly settle. You cannot rest deeply in a body that is holding on.</p>
+    <ul class="use-list">
+      <li class="use-item">
+        <span class="use-num">01</span>
+        <div class="use-content">
+          <h3>As a Standalone Practice</h3>
+          <p>Twenty minutes of Yoga Nidra can restore the body more deeply than several hours of ordinary sleep. A practice you can return to whenever you need to reset.</p>
         </div>
       </li>
-      <li class="program-item">
-        <span class="program-num">02</span>
-        <div class="program-content">
-          <h3>Pranayama — Working with Breath</h3>
-          <p>How the breath directly regulates the nervous system — and which techniques calm, which energise, and why. Practical tools you can use every day.</p>
+      <li class="use-item">
+        <span class="use-num">02</span>
+        <div class="use-content">
+          <h3>To Complete Your Yoga Practice</h3>
+          <p>The final integration of any yoga session. Where asana releases the body and pranayama settles the breath, Yoga Nidra integrates everything into stillness.</p>
         </div>
       </li>
-      <li class="program-item">
-        <span class="program-num">03</span>
-        <div class="program-content">
-          <h3>Yoga Nidra — The Yogic View &amp; The Science</h3>
-          <p>Where this practice comes from, how it was developed, and what research tells us about what happens in the brain and body. Understanding deepens the experience.</p>
+      <li class="use-item">
+        <span class="use-num">03</span>
+        <div class="use-content">
+          <h3>For Stress, Sleep, and Anxiety</h3>
+          <p>A direct tool to calm an overactive nervous system. Used regularly, it restores natural sleep, eases anxiety, and creates a felt sense of safety in the body.</p>
         </div>
       </li>
-      <li class="program-item">
-        <span class="program-num">04</span>
-        <div class="program-content">
-          <h3>A Guided Yoga Nidra Practice</h3>
-          <p>Experience the practice directly — a full guided session so you know exactly what it feels like and how to recognise the state.</p>
-        </div>
-      </li>
-      <li class="program-item">
-        <span class="program-num">05</span>
-        <div class="program-content">
-          <h3>Hridayakasha Dharana — Heart Space Meditation</h3>
-          <p>A meditation on the inner space of the heart. Gentle, still, and profound. The natural companion to Yoga Nidra.</p>
+      <li class="use-item">
+        <span class="use-num">04</span>
+        <div class="use-content">
+          <h3>To Work with Sankalpa</h3>
+          <p>A short, heartfelt intention planted at the deepest level of the mind. This is how Yoga Nidra becomes a vehicle for real, lasting change.</p>
         </div>
       </li>
     </ul>
   </div>
 </section>
 
-<!-- WHO -->
-<section class="who">
-  <div class="who-inner">
-    <h2>This session is for you if...</h2>
-    <div class="who-list">
-      <div class="who-item">You find it hard to truly switch off — even when you rest, your mind keeps running.</div>
-      <div class="who-item">You are curious about Yoga Nidra but want to understand it, not just experience it.</div>
-      <div class="who-item">You want a practice you can actually use — not just in class, but in your daily life.</div>
-      <div class="who-item">You are new to yoga or meditation, or come from a regular practice and want to go deeper.</div>
-      <div class="who-item">You are simply tired of being tired.</div>
+<!-- WORKSHOP - redesigned -->
+<section class="workshop">
+  <div class="workshop-inner">
+    <div class="workshop-header">
+      <span class="section-label" style="text-align:center;">The Workshop</span>
+      <h2>90 minutes to understand <em>and</em> experience the practice</h2>
+      <p>An invitation to meet Yoga Nidra fully — not just as something to try, but as something to understand and take home with you.</p>
     </div>
-    <a href="#register" class="btn-primary">Reserve Your Spot</a>
+
+    <div class="explore-title">
+      <h3>· What we explore together ·</h3>
+    </div>
+
+    <div class="explore-grid">
+      <div class="explore-item">
+        <h4><span class="ornament">✦</span> Asana</h4>
+        <p>Gentle movement to release physical tension and prepare the body for stillness.</p>
+      </div>
+      <div class="explore-item">
+        <h4><span class="ornament">✦</span> Pranayama</h4>
+        <p>How breath directly regulates the nervous system, with practical tools.</p>
+      </div>
+      <div class="explore-item">
+        <h4><span class="ornament">✦</span> Practice &amp; Science</h4>
+        <p>Where Yoga Nidra comes from and what research tells us about its effects.</p>
+      </div>
+      <div class="explore-item">
+        <h4><span class="ornament">✦</span> Guided Yoga Nidra</h4>
+        <p>A full experience of the practice so you know exactly how it feels.</p>
+      </div>
+      <div class="explore-item" style="grid-column: 1 / -1;">
+        <h4><span class="ornament">✦</span> Hridayakasha Dharana</h4>
+        <p>Meditation on the inner space of the heart — the natural companion to Yoga Nidra.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -773,40 +687,20 @@
     <span class="section-label">Your Guide</span>
     <h2>Megie Santana</h2>
     <p>Megie brings together a deep background in contemplative and somatic practices with a clear, grounded approach to teaching. Her sessions are warm, precise, and designed to help you understand — not just feel — what you are doing and why it works.</p>
-    <p>This workshop is an invitation to begin. To understand one practice, deeply, and take it home with you.</p>
+    <p>The workshop is an invitation to begin. To understand one practice, deeply, and carry it forward into your life.</p>
   </div>
 </section>
 
-<!-- REGISTER -->
-<section class="register" id="register">
-  <div class="register-inner">
-    <span class="section-label">Reserve Your Spot</span>
-    <h2>Join us on 24 May</h2>
-    <p class="sub">Click below to reserve your spot. We look forward to seeing you.</p>
-    <a href="https://tally.so/r/QKvdaY" class="btn-primary">Reserve My Spot</a>
-    <p style="font-size:15px; color:#5a5a5a; line-height:1.9; margin-bottom:24px;">Pay €15 via Wise to @magdalenas31 with your name as reference, or register below and pay at the door.</p>
-
-<p style="font-size:13px; color:#8a8a8a; margin-top:16px;">Questions? WhatsApp +351 925 703 502</p>
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-inner">
+    <h2>"Once you understand it,<br>it belongs to you forever."</h2>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <p>📍 Sodashi Spa, Ericeira &nbsp;·&nbsp; Saturday 24 May &nbsp;·&nbsp; 10:30 – 12:00 &nbsp;·&nbsp; </p>
-  <br>
-  <p style="margin-top:12px; font-size:11px;">© 2026 Megie Santana</p>
+  <p>SYNERGIAS · YOGA NIDRA · MEGIE SANTANA</p>
 </footer>
-
-<script>
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = document.getElementById('reg-form');
-    const success = document.getElementById('success-msg');
-    form.style.display = 'none';
-    success.style.display = 'block';
-    // Here you would connect to Mailchimp, ConvertKit, or your chosen email tool
-  }
-</script>
 
 </body>
 </html>
