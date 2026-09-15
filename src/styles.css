@@ -1,0 +1,532 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Stillness / Yoga Nidra design system.
+ * Brand palette preserved from the original site.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* brand */
+  --color-cream: var(--cream);
+  --color-cream-soft: var(--cream-soft);
+  --color-khaki: var(--khaki);
+  --color-khaki-soft: var(--khaki-soft);
+  --color-emerald: var(--emerald);
+  --color-emerald-deep: var(--emerald-deep);
+  --color-emerald-light: var(--emerald-light);
+  --color-wasabi: var(--wasabi);
+  --color-earth: var(--earth);
+  --color-earth-soft: var(--earth-soft);
+  --color-noir: var(--noir);
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* brand palette — unchanged from the original site */
+  --cream: oklch(0.972 0.014 85.9);
+  --cream-soft: oklch(0.954 0.024 87.5);
+  --khaki: oklch(0.89 0.09 88);
+  --khaki-soft: oklch(0.93 0.06 89);
+  --emerald: oklch(0.334 0.031 165);
+  --emerald-deep: oklch(0.263 0.028 166);
+  --emerald-light: oklch(0.472 0.043 158);
+  --wasabi: oklch(0.6 0.024 140);
+  --earth: oklch(0.57 0.13 51);
+  --earth-soft: oklch(0.68 0.1 50);
+  --noir: oklch(0.19 0.014 178);
+
+  --background: var(--cream);
+  --foreground: var(--noir);
+  --card: var(--cream-soft);
+  --card-foreground: var(--noir);
+  --popover: var(--cream);
+  --popover-foreground: var(--noir);
+  --primary: var(--emerald);
+  --primary-foreground: var(--cream);
+  --secondary: var(--cream-soft);
+  --secondary-foreground: var(--emerald);
+  --muted: var(--cream-soft);
+  --muted-foreground: var(--wasabi);
+  --accent: var(--khaki-soft);
+  --accent-foreground: var(--emerald);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.88 0.02 87);
+  --input: oklch(0.88 0.02 87);
+  --ring: var(--wasabi);
+
+  /* signature gradient: yellow -> green, vertical */
+  --gradient-cta: linear-gradient(180deg, oklch(0.91 0.11 92) 0%, oklch(0.72 0.11 128) 55%, oklch(0.5 0.075 152) 100%);
+  --gradient-cta-hover: linear-gradient(180deg, oklch(0.93 0.12 93) 0%, oklch(0.76 0.12 130) 55%, oklch(0.44 0.07 155) 100%);
+  --shadow-cta: 0 10px 24px -12px oklch(0.334 0.031 165 / 0.5);
+  --shadow-soft: 0 24px 60px -32px oklch(0.19 0.014 178 / 0.35);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* keep section headings clear of the sticky header on anchor navigation */
+  section[id],
+  [id] {
+    scroll-margin-top: 96px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--earth);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--khaki);
+    color: var(--emerald-deep);
+  }
+}
+
+/* ---------- brand utilities ---------- */
+
+@utility font-display {
+  font-family: var(--font-serif);
+  font-weight: 300;
+}
+
+@utility label-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+@utility btn-gradient {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 9999px;
+  padding: 0.85rem 1.7rem;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--emerald-deep);
+  background-image: var(--gradient-cta);
+  box-shadow: var(--shadow-cta);
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    background-image 0.4s ease;
+
+  &:hover {
+    background-image: var(--gradient-cta-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px -14px oklch(0.334 0.031 165 / 0.6);
+  }
+
+  &:active {
+    transform: translateY(1px) scale(0.988);
+    box-shadow: 0 4px 12px -8px oklch(0.334 0.031 165 / 0.55);
+    transition-duration: 0.09s;
+  }
+}
+
+@utility btn-quiet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  padding: 0.8rem 1.6rem;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition:
+    opacity 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover {
+    opacity: 0.75;
+    background-color: color-mix(in oklab, currentColor 8%, transparent);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(1px) scale(0.988);
+    transition-duration: 0.09s;
+  }
+}
+
+/* quiet, non-button text links */
+@utility link-quiet {
+  color: inherit;
+  transition:
+    color 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &:hover {
+    color: var(--earth);
+    transform: translateX(2px);
+  }
+
+  &:active {
+    transform: translateX(2px) translateY(1px);
+  }
+}
+
+@utility link-arrow {
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
+
+  & .link-arrow-mark {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover {
+    color: var(--earth);
+  }
+
+  &:hover .link-arrow-mark {
+    transform: translateX(5px);
+  }
+
+  &:active {
+    opacity: 0.75;
+  }
+}
+
+/* almost imperceptible cinematic drift for hero imagery */
+@keyframes hero-drift {
+  0% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.09) translate3d(0, -1.2%, 0);
+  }
+}
+
+@utility hero-drift {
+  animation: hero-drift 46s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@media (max-width: 640px) {
+  .hero-drift {
+    animation-duration: 60s;
+  }
+}
+
+/* the feeling of walking very slowly forward into the forest */
+@keyframes forest-walk {
+  0% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.14) translate3d(0, 0.8%, 0);
+  }
+}
+
+@utility forest-walk {
+  animation: forest-walk 72s ease-in-out infinite alternate;
+  will-change: transform;
+  transform-origin: 50% 55%;
+  backface-visibility: hidden;
+}
+
+/* gentler, cheaper forward drift on phones */
+@media (max-width: 640px) {
+  @keyframes forest-walk-sm {
+    0% {
+      transform: scale(1.03);
+    }
+    100% {
+      transform: scale(1.09);
+    }
+  }
+
+  .forest-walk {
+    animation: forest-walk-sm 96s ease-in-out infinite alternate;
+  }
+}
+
+
+/* ---------- hero: still water, drifting mist ---------- */
+
+/* the whole scene breathes forward, the water surface gently rising & settling */
+@keyframes hero-still {
+  0% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.075) translate3d(-0.8%, 1.2%, 0);
+  }
+  100% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+}
+
+@utility hero-still {
+  animation: hero-still 42s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+  transform-origin: 58% 70%;
+  backface-visibility: hidden;
+}
+
+/* mist: a very slow lateral drift, never a visible sweep */
+@keyframes mist-drift {
+  0% {
+    transform: translate3d(-3%, 0, 0) scale(1.08);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(3%, -1.5%, 0) scale(1.14);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(-3%, 0, 0) scale(1.08);
+    opacity: 0.45;
+  }
+}
+
+@utility mist-drift {
+  animation: mist-drift 110s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* water: a barely-there settling of the surface */
+@keyframes water-still {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scaleY(1);
+    opacity: 0.32;
+  }
+  50% {
+    transform: translate3d(0.8%, -0.4%, 0) scaleY(1.02);
+    opacity: 0.5;
+  }
+}
+
+@utility water-still {
+  animation: water-still 46s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+
+
+
+/* the flowing gold linework: a breath, nothing more */
+@keyframes line-breathe {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.012) rotate(0.25deg);
+    opacity: 0.8;
+  }
+}
+
+@utility line-breathe {
+  animation: line-breathe 64s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* the water surface itself: a soft, visibly moving reflection — no lines */
+@keyframes water-surface {
+  0% {
+    transform: translate3d(-4%, 0, 0) scale(1.14) skewY(1deg);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate3d(0%, -2%, 0) scale(1.22) skewY(-1.2deg);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate3d(4%, 1%, 0) scale(1.18) skewY(0.8deg);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translate3d(-1%, 2%, 0) scale(1.24) skewY(-0.8deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(-4%, 0, 0) scale(1.14) skewY(1deg);
+    opacity: 0.6;
+  }
+}
+
+@utility water-surface {
+  animation: water-surface 12s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes water-sheen {
+  0%,
+  100% {
+    transform: translate3d(-10%, 0, 0) scaleY(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate3d(10%, -2%, 0) scaleY(1.18);
+    opacity: 0.75;
+  }
+}
+
+@utility water-sheen {
+  animation: water-sheen 9s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-still,
+  .mist-drift,
+  .water-still,
+  .water-surface,
+  .water-sheen,
+  .line-breathe {
+    animation: none;
+  }
+}
+
+
+/* slower, gentler reveal reserved for large visual pauses */
+@utility reveal-slow {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+
+@utility grain {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.25;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  }
+}
+
+/* ---------- motion ---------- */
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -22px, 0) scale(1.04);
+  }
+}
+
+@utility drift-slow {
+  animation: drift 18s ease-in-out infinite;
+}
+
+@utility drift-slower {
+  animation: drift 26s ease-in-out infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- soft interactive lift for quiet text links ---------- */
+@utility hover-lift {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: left center;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+
+  &:active {
+    transform: scale(0.995);
+    transition-duration: 0.1s;
+  }
+}
+
+@media (hover: none) {
+  .hover-lift:hover {
+    transform: none;
+  }
+}
+
